@@ -14474,31 +14474,7 @@ a.anchor-link {
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
 
-def test_task1_output_type():
-    assert str(type(last_output)) == &quot;&lt;class &#39;sql.run.ResultSet&#39;&gt;&quot;, \
-    &quot;Please ensure an SQL ResultSet is the output of the code cell.&quot; 
-
-results = last_output.DataFrame()
-
-def test_task1_results():
-    assert results.shape == (10, 7), \
-    &quot;The results should have fourteen columns and ten rows.&quot;
-    assert set(results.columns) == set([&#39;school_name&#39;, &#39;borough&#39;, &#39;building_code&#39;, &#39;average_math&#39;, &#39;average_reading&#39;, &#39;average_writing&#39;, &#39;percent_tested&#39;]), \
-    &#39;The results should include all columns from the database, without using an alias.&#39;
-    assert last_output.DataFrame().loc[0, &#39;building_code&#39;] == &quot;M022&quot;, \
-    &quot;The building code for the first school should be M022.&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -14611,30 +14587,7 @@ def test_task1_results():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task2_columns():
-    assert last_output_df.shape == (1, 2), \
-    &quot;Did you correctly select the data? Expected the result to contain one row and two columns?&quot;
-    assert set(last_output_df.columns) == set([&quot;num_tested_missing&quot;, &quot;num_schools&quot;]), \
-    &quot;Did you use the alias `num_tested_missing` and also select the `num_schools` column?&quot;
-
-def test_task2_output():
-    assert last_output_df.iloc[0, 0] == 20, \
-    &quot;&quot;&quot;Did you correctly calculate `&quot;num_tested_missing&quot;?&quot;&quot;&quot;
-    assert last_output_df.iloc[0, 1] == 375, \
-    &quot;&quot;&quot;Did you correctly calculate the total number of rows in the database?&quot;&quot;&quot;  
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -14744,26 +14697,6 @@ def test_task2_output():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
-
-def test_task3_column_name():
-    assert last_output_df.columns.tolist() == [&quot;num_school_buildings&quot;], \
-    &quot;Did you use the correct alias for the number of unique school buildings?&quot;
-
-def test_task3_value():
-    assert last_output_df.values.tolist() == [[233]], \
-    &quot;Did you use the correct method to calculate how many unique school buildings are in the database? Expected a different value.&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -14918,34 +14851,7 @@ def test_task3_value():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task4_columns():
-    assert set(last_output_df.columns) == set([&quot;school_name&quot;, &quot;average_math&quot;]), \
-    &quot;Did you select the correct columns?&quot;
-
-def test_task4_filter():
-    assert last_output_df[&quot;average_math&quot;].min() &gt;= 640, \
-    &quot;&quot;&quot;Did you correctly filter for &quot;average_math&quot; scores more than or equal to 640?&quot;&quot;&quot;
-    assert last_output_df.shape == (10, 2), \
-    &quot;&quot;&quot;The output has the wrong number of results, did you correctly filter the &quot;average_math&quot; column?&quot;&quot;&quot;
-
-def test_task4_values():
-    assert last_output_df.iloc[0,0] == &quot;Stuyvesant High School&quot;, \
-    &quot;&quot;&quot;Did you run the correct query? Expected the first school to be &quot;Stuyvesant High School&quot;.&quot;&quot;&quot;
-    assert last_output_df.iloc[0,1] == 754.0, \
-    &quot;&quot;&quot;Did you correctly sort the values by &quot;average_math&quot; in descending order? Expected a different range of results.&quot;&quot;&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -15055,26 +14961,7 @@ def test_task4_values():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[60]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task5_value():  
-    assert last_output_df[&quot;lowest_reading&quot;].values.tolist() == [302.0], \
-    &quot;&quot;&quot;Did you select the minimum value for the &quot;average_reading&quot; column?&quot;&quot;&quot;
-
-def test_task5_alias():
-    assert last_output_df.columns.tolist() == [&quot;lowest_reading&quot;], \
-    &quot;&quot;&quot;Did you use the correct alias? Expected &quot;lowest_reading&quot;.&quot;&quot;&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -15195,30 +15082,7 @@ def test_task5_alias():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task6_columns():
-    assert set(last_output_df.columns) == set([&quot;school_name&quot;, &quot;max_writing&quot;]), \
-    &quot;&quot;&quot;Did you select &quot;average_writing&quot; and use an alias?&quot;&quot;&quot;
-    
-def test_task6_shape():
-    assert last_output_df.shape[0] == 1, \
-    &quot;Did you select the correct number of values? Expected one row.&quot;
-
-def test_task6_values():
-    assert last_output_df.values.tolist() == [[&#39;Stuyvesant High School&#39;, 693.0]], \
-    &quot;&quot;&quot;Did you select the maximum value for &quot;average_writing&quot;? Expected a different value.&quot;&quot;&quot;  
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -15376,36 +15240,7 @@ def test_task6_values():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task7_columns():
-    assert set(last_output_df.columns) == set([&quot;school_name&quot;, &quot;average_sat&quot;]), \
-    &quot;&quot;&quot;Did you select the correct columns and use an alias for the sum of the three sat score columns?&quot;&quot;&quot;
-    
-def test_task7_shape():
-    assert last_output_df.shape[0] == 10, \
-    &quot;Did you limit the number of results to ten?&quot;
-    assert last_output_df.shape[1] == 2, \
-    &quot;&quot;&quot;Expected your query to return two columns: &quot;school_name&quot; and &quot;average_sat&quot;.&quot;&quot;&quot;
-
-def test_task7_values():
-    assert last_output_df.iloc[0].values.tolist() == [&#39;Stuyvesant High School&#39;, 2144], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for the first school.&quot;&quot;&quot;
-    assert last_output_df[&quot;average_sat&quot;].min() == 1889, \
-    &quot;&quot;&quot;Did you correctly filter the results? Expected a different lowest score for &quot;average_sat&quot;.&quot;&quot;&quot;  
-    assert last_output_df[&quot;average_sat&quot;].max() == 2144, \
-    &quot;&quot;&quot;Did you correctly calculate the &quot;average_sat&quot; column? Expected a different top score.&quot;&quot;&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -15549,44 +15384,7 @@ def test_task7_values():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
 
-def test_task8_columns():
-    assert set(last_output_df.columns) == set([&#39;borough&#39;, &#39;num_schools&#39;, &#39;average_borough_sat&#39;]), \
-    &quot;&quot;&quot;Did you select the correct columns and use aliases for the number of schools and average sat scores?&quot;&quot;&quot;
-
-def test_task8_shape():
-    assert last_output_df.shape[0] == 5, \
-    &quot;Did you group by the correct column? Expected five rows to be returned: one for each borough.&quot;
-    assert last_output_df.shape[1] == 3, \
-    &quot;&quot;&quot;Expected your query to return three columns: &quot;borough&quot;, &quot;num_schools&quot;, and &quot;average_borough_sat&quot;.&quot;&quot;&quot;
-
-def test_task8_values():
-    # Each assert statement checks values per row 
-    assert last_output_df.iloc[0].values.tolist() == [&#39;Staten Island&#39;, 10, 1439], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for Staten Island.&quot;&quot;&quot;
-    assert last_output_df.iloc[1].values.tolist() == [&#39;Queens&#39;, 69, 1345], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for Queens.&quot;&quot;&quot;
-    assert last_output_df.iloc[2].values.tolist() == [&#39;Manhattan&#39;, 89, 1340], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for Manhattan.&quot;&quot;&quot;
-    assert last_output_df.iloc[3].values.tolist() == [&#39;Brooklyn&#39;, 109, 1230], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for Brooklyn.&quot;&quot;&quot;
-    assert last_output_df.iloc[4].values.tolist() == [&#39;Bronx&#39;, 98, 1202], \
-    &quot;&quot;&quot;Did you correctly define your query? Expected different values for the Bronx.&quot;&quot;&quot;
-    # Check lowest average_reading score is in the last row
-    assert last_output_df.iloc[-1, 0] == &#39;Bronx&#39;, \
-    &quot;&quot;&quot;Did you sort the results by &quot;average_sat&quot; in descending order?&quot;&quot;&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
@@ -15724,40 +15522,6 @@ def test_task8_values():
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_tests">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">nose</span>
-last_output = _
-last_output_df = last_output.DataFrame()
-
-def test_task9_columns():
-    assert last_output_df.columns.tolist() == [&#39;school_name&#39;, &#39;average_math&#39;], \
-    &quot;&quot;&quot;Did you select the correct columns? Expected &quot;school_name&quot; and &quot;average_math&quot;.&quot;&quot;&quot;
-    
-def test_task9_shape():
-    assert last_output_df.shape[0] == 5, \
-    &quot;Did you limit the output to 5 rows?&quot;
-    assert last_output_df.shape[1] == 2, \
-    &quot;Did you select the correct number of columns? Expected two.&quot;
-    
-def test_task9_school_names():
-    assert last_output_df[&quot;school_name&quot;].tolist() == [&#39;Brooklyn Technical High School&#39;, &#39;Brooklyn Latin School&#39;, &#39;Leon M. Goldstein High School for the Sciences&#39;, &#39;Millennium Brooklyn High School&#39;, &#39;Midwood High School&#39;], \
-    &quot;Did you correctly filter by borough? Expected a different list of school names.&quot;
-    
-def test_task9_values():
-    assert last_output_df[&quot;average_math&quot;].max() == 682, \
-    &quot;&quot;&quot;Did you select the correct values? Expected a maximum value of 682.0 for &quot;average_math&quot;.&quot;&quot;&quot;    
-    assert last_output_df[&quot;average_math&quot;].min() == 550, \
-    &quot;&quot;&quot;Did you select the correct values? Expected a minimum value of 550.0 for &quot;average_math&quot;.&quot;&quot;&quot;
-    assert last_output_df[&quot;average_math&quot;].values.tolist() == [682, 625, 563, 553, 550], \
-    &quot;&quot;&quot;Did you sort by &quot;average_math&quot; in descending order? Expected different values.&quot;&quot;&quot;
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
